@@ -1,4 +1,4 @@
 package Lesson_2;
 
-public class MyArraySizeException {
+public class MyArraySizeException extends Exception {
 }
