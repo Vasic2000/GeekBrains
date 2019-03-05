@@ -1,4 +1,4 @@
-package Lesson_2;
+package Lesson_2.ArraySum;
 
 public class ArraySum {
     private String array[][] = new String[4][4];
