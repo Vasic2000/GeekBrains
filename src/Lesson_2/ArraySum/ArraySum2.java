@@ -1,4 +1,4 @@
-package Lesson_2;
+package Lesson_2.ArraySum;
 
 public class ArraySum2 {
 
@@ -28,4 +28,3 @@ public class ArraySum2 {
         return ArraySum;
     }
 }
-
