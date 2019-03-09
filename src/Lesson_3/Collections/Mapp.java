@@ -8,7 +8,7 @@ public class Mapp {
 
     public Mapp(String[] array) {
         for (int i = 0; i < array.length; i++) {
-            if (hm.isEmpty())
+            if (hm.isEmpty())       // Проверяю, чтобы книга была непустая и сразу добавлять, ничего не искать и не получать NullPointerException
                 hm.put(array[i], 1);
             else {
                 if (hm.containsKey(array[i]))
