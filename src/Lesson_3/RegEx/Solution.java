@@ -1,4 +1,4 @@
-package Lesson_3.Regx;
+package Lesson_3.RegEx;
 
 import javax.swing.*;
 import java.util.regex.Matcher;
