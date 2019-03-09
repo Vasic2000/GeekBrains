@@ -14,7 +14,7 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        System.out.println(getWorkingHours(DayOfWeek.SUNDAY));
+        System.out.println(getWorkingHours(DayOfWeek.TUESDAY));
     }
 
     public static int getWorkingHours(DayOfWeek day){
