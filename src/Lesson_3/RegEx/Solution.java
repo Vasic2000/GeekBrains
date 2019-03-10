@@ -14,22 +14,26 @@ public class Solution {
 //  4 Обязательно дожен быть спец символ
 
 
-        String password = Read();
-        String[] message = checkPassword_4Step(password);
-        while (!(message[0].equals("Ok") && message[1].equals("Ok") && message[2].equals("Ok") && message[3].equals("Ok"))) {
-            JOptionPane.showMessageDialog(null, message, "Ненадёжный пароль", JOptionPane.WARNING_MESSAGE);
-            password = Read();
-            message = checkPassword_4Step(password);
-        }
-        JOptionPane.showMessageDialog(null, "\"" + password + "\"" + " отличный пароль!", "Отличный пароль", JOptionPane.INFORMATION_MESSAGE);
+//        String password = Read();
+//        String[] message = checkPassword_4Step(password);
+//        while (!(message[0].equals("Ok") && message[1].equals("Ok") && message[2].equals("Ok") && message[3].equals("Ok"))) {
+//            JOptionPane.showMessageDialog(null, message, "Ненадёжный пароль", JOptionPane.WARNING_MESSAGE);
+//            password = Read();
+//            message = checkPassword_4Step(password);
+//        }
+//        JOptionPane.showMessageDialog(null, "\"" + password + "\"" + " отличный пароль!", "Отличный пароль", JOptionPane.INFORMATION_MESSAGE);
 
 
-//        Тест
-//        System.out.println(checkPassword_1Step("AAAAAAAAAAAAA"));
-//        System.out.println(checkPassword_1Step("AAaaaaaaaaaa"));
-//        System.out.println(checkPassword_1Step("Aaaaaaaaaaa3"));
-//        System.out.println(checkPassword_1Step("8Aa+qqqqqqqqq"));
-//        System.out.println(checkPassword_1Step("Aaaaaaaaaa+"));
+//        Тест для второй функции
+        System.out.println(checkPassword_1Step("A"));
+        System.out.println(checkPassword_1Step("876543210"));
+        System.out.println(checkPassword_1Step("Aaaaaaaaaaa3"));
+        System.out.println(checkPassword_1Step("8Aa+qqqqqqqqq"));
+        System.out.println(checkPassword_1Step("Aaaaaaaaaa+"));
+        System.out.println(checkPassword_1Step("Aaaaa9aaaa+"));
+
+
+
     }
 
 
@@ -81,16 +85,13 @@ public class Solution {
     }
 
 
-//    С одним RegX не получилось (
+//    С одним RegX не получилось ограничить по длине строки (
     public static boolean checkPassword_1Step(String password) {
 
-//        Pattern p5 = Pattern.compile("^(\\d+[A-Z]+[a-z]+\\W)|(\\d+[a-z]+[A-Z]+\\W)|(\\d+\\W+[A-Z]+[a-z])|(\\d+\\W+[a-z]+[A-Z]+\\W)|" +
-//                "([A-Z]+\\d+[a-z]+\\W)|([a-z]+\\d+[A-Z]+\\W)|(\\W+\\d+[A-Z]+[a-z])|(\\W+\\d+[a-z]+[A-Z]+\\W)|" +
-//                "([A-Z]+[a-z]+\\d+\\W)|([a-z]+[A-Z]+\\d+\\W)|(\\W+[A-Z]+\\d+[a-z])|(\\W+[a-z]+[A-Z]+\\d+\\W)" +
-//                "([A-Z]+[a-z]+\\W+\\d)|([a-z]+[A-Z]+\\W+\\d)|(\\W+[A-Z]+[a-z]+\\d)|(\\W+[a-z]+[A-Z]+\\W+\\d){8,20}$");
-
-
-        Pattern p5 = Pattern.compile("^(\\d*.*\\W){8,20}$");
+        Pattern p5 = Pattern.compile("^(.*\\d.*[A-Z].*[a-z].*\\W.*)|(.*\\d.*[A-Z].*\\W.*[a-z].*)|(.*\\d.*\\W.*[A-Z].*[a-z].*)|(.*\\d.*\\W.*[a-z].*[A-Z].*)|" +
+                "(.*[A-Z].*\\d.*[a-z].*\\W.*)|(.*[A-Z].*\\d.*\\W.*[a-z].*)|(.*\\W.*\\d.*[A-Z].*[a-z].*)|(.*\\W.*\\d.*[a-z].*[A-Z].*)|" +
+                "(.*[A-Z].*[a-z].*\\d.*\\W.*)|(.*[A-Z].*\\W.*\\d.*[a-z].*)|(.*\\W.*[A-Z].*\\d.*[a-z].*)|(.*\\W.*[a-z].*\\d.*[A-Z].*)|" +
+                "(.*[A-Z].*[a-z].*\\W.*\\d.*)|(.*[A-Z].*\\W.*[a-z].*\\d.*)|(.*\\W.*[A-Z].*[a-z].*\\d.*)|(.*\\W.*[a-z].*[A-Z].*\\d.*)$");
         Matcher m5 = p5.matcher(password);
         return m5.matches();
     }
