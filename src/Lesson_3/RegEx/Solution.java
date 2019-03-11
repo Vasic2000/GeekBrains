@@ -1,5 +1,6 @@
 package Lesson_3.RegEx;
 
+
 import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -88,10 +89,7 @@ public class Solution {
 //    С одним RegX не получилось ограничить по длине строки (
     public static boolean checkPassword_1Step(String password) {
 
-        Pattern p5 = Pattern.compile("^(.*\\d.*[A-Z].*[a-z].*\\W.*)|(.*\\d.*[A-Z].*\\W.*[a-z].*)|(.*\\d.*\\W.*[A-Z].*[a-z].*)|(.*\\d.*\\W.*[a-z].*[A-Z].*)|" +
-                "(.*[A-Z].*\\d.*[a-z].*\\W.*)|(.*[A-Z].*\\d.*\\W.*[a-z].*)|(.*\\W.*\\d.*[A-Z].*[a-z].*)|(.*\\W.*\\d.*[a-z].*[A-Z].*)|" +
-                "(.*[A-Z].*[a-z].*\\d.*\\W.*)|(.*[A-Z].*\\W.*\\d.*[a-z].*)|(.*\\W.*[A-Z].*\\d.*[a-z].*)|(.*\\W.*[a-z].*\\d.*[A-Z].*)|" +
-                "(.*[A-Z].*[a-z].*\\W.*\\d.*)|(.*[A-Z].*\\W.*[a-z].*\\d.*)|(.*\\W.*[A-Z].*[a-z].*\\d.*)|(.*\\W.*[a-z].*[A-Z].*\\d.*)$");
+        Pattern p5 = Pattern.compile("^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\\W)+.{8,20}$");
         Matcher m5 = p5.matcher(password);
         return m5.matches();
     }

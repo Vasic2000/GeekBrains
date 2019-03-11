@@ -1,6 +1,6 @@
 package Lesson_3.Phonebook;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Solution {
 
@@ -38,7 +38,7 @@ public class Solution {
     }
 
     static void PrintNumbers(String name, Phonebook book) {
-        ArrayList<String> phones = book.getNumberByName(name);
+        HashSet<String> phones = book.getNumberByName(name);
         if(phones.isEmpty())
             System.out.println("Нет такого имени = " + name);
         else for(String str : phones)
