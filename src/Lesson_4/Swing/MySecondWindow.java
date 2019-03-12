@@ -1,11 +1,11 @@
-package Lesson_4;
+package Lesson_4.Swing;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Lesson_4.Solution.mfw;
+import static Lesson_4.Swing.Solution.mfw;
 
 
 public class MySecondWindow extends JFrame {

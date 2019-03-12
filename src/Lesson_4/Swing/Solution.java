@@ -1,4 +1,4 @@
-package Lesson_4;
+package Lesson_4.Swing;
 
 public class Solution {
     public static MyFirstWindow mfw;
