@@ -9,11 +9,9 @@ import static Lesson_4.Solution.msw;
 
 
 public class MyFirstWindow extends JFrame {
-
-    private String name = "Иван";
-    private String surname = "Иванов";
-    private String secondName = "Иванович";
-
+    public JTextField jta1;
+    public JTextField jta2;
+    public JTextField jta3;
 
     public MyFirstWindow() {
         setTitle("My First Window");
@@ -30,66 +28,31 @@ public class MyFirstWindow extends JFrame {
         }
 
         jp[0][0].setLayout(new BorderLayout());
-        JTextArea jta1 = new JTextArea();
-        jta1.append(name);
-        jta1.setPreferredSize(new Dimension(200, 100));
+        jta1 = new JTextField("Иван");
         jta1.setEditable(false);
-        JScrollPane jsp1 = new JScrollPane(jta1);
-        jp[0][0].add(jsp1);
+        jp[0][0].add(jta1);
 
         jp[1][0].setLayout(new BorderLayout());
-        JTextArea jta2 = new JTextArea();
-        jta2.append(secondName);
-        jta2.setPreferredSize(new Dimension(200, 100));
+        jta2 = new JTextField("Иванович");
         jta2.setEditable(false);
-        JScrollPane jsp2 = new JScrollPane(jta2);
-        jp[1][0].add(jsp2);
+        jp[1][0].add(jta2);
 
         jp[2][0].setLayout(new BorderLayout());
-        JTextArea jta3 = new JTextArea();
-        jta3.append(surname);
-        jta3.setPreferredSize(new Dimension(200, 100));
+        jta3 = new JTextField("Иванов");
         jta3.setEditable(false);
-        JScrollPane jsp3 = new JScrollPane(jta3);
-        jp[2][0].add(jsp3);
+        jp[2][0].add(jta3);
+
 
         jp[3][0].setLayout(new BorderLayout());
-        JButton jbtn2 = new JButton("Edit");
-        jbtn2.addActionListener(new ActionListener() {
+        JButton jbtn1 = new JButton("Edit");
+        jbtn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 msw.setVisible(true);
             }
         });
-        jp[3][0].add(jbtn2);
+        jp[3][0].add(jbtn1);
 
         setVisible(true);
     }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
 }

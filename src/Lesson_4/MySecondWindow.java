@@ -7,7 +7,11 @@ import java.awt.event.ActionListener;
 
 import static Lesson_4.Solution.mfw;
 
+
 public class MySecondWindow extends JFrame {
+    public JTextField jta21;
+    public JTextField jta22;
+    public JTextField jta23;
 
     public MySecondWindow() {
         setTitle("My First Window");
@@ -23,21 +27,18 @@ public class MySecondWindow extends JFrame {
             }
 
         jp[0][0].setLayout(new BorderLayout());
-        JTextArea jta21 = new JTextArea();
-        jta21.append(mfw.getName());
-        jta21.setPreferredSize(new Dimension(200, 100));
+        jta21 = new JTextField();
+        jta21 = new JTextField(mfw.jta1.getText());
         jp[0][0].add(jta21);
 
         jp[1][0].setLayout(new BorderLayout());
-        JTextArea jta22 = new JTextArea();
-        jta22.append(mfw.getSecondName());
-        jta22.setPreferredSize(new Dimension(200, 100));
+        jta22 = new JTextField();
+        jta22 = new JTextField(mfw.jta2.getText());
         jp[1][0].add(jta22);
 
         jp[2][0].setLayout(new BorderLayout());
-        JTextArea jta23 = new JTextArea();
-        jta23.append(mfw.getSurname());
-        jta23.setPreferredSize(new Dimension(200, 100));
+        jta23 = new JTextField();
+        jta23 = new JTextField(mfw.jta3.getText());
         jp[2][0].add(jta23);
 
         jp[3][0].setLayout(new BorderLayout());
@@ -45,11 +46,12 @@ public class MySecondWindow extends JFrame {
         jbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mfw.jta1.setText(jta21.getText());
+                mfw.jta2.setText(jta22.getText());
+                mfw.jta3.setText(jta23.getText());
                 setVisible(false);
             }
         });
         jp[3][0].add(jbtn);
-
     }
 }
