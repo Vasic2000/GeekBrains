@@ -23,7 +23,7 @@ public class ThreadsMain extends Thread {
             arr[i] = (float) 1;
         long a = System.currentTimeMillis();
         for (int i = 0; i < size; i++) {
-            arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            arr[i] = calck(arr[i], i);
         }
         System.out.println("\nОдин массив в 1 поток");
         System.out.println((float) (System.currentTimeMillis() - a) / 1000 + " sec Время работы с целым массивом");
@@ -37,10 +37,10 @@ public class ThreadsMain extends Thread {
         System.arraycopy(arr, h, a2, 0, h);
         long b = System.currentTimeMillis();
         for (int i = 0; i < h; i++) {
-            a1[i] = (float) (a1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            a1[i] = calck(a1[i], i);//a1[i] = (float) (a1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
         for (int i = 0; i < h; i++) {
-            a2[i] = (float) (a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            a2[i] = calck(a2[i], i);//a2[i] = (float) (a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
         long c = System.currentTimeMillis();
         System.arraycopy(a1, 0, arr, 0, h);
@@ -48,11 +48,7 @@ public class ThreadsMain extends Thread {
         long d = System.currentTimeMillis();
 
         System.out.println("\nДва массива в 1 поток");
-        System.out.println((float) (b - a) / 1000 + " sec - время деления массива на два");
-        System.out.println((float) (c - b) / 1000 + " sec - время просчёта двух массивов");
-        System.out.println((float) (d - c) / 1000 + " sec - время склейки массивов");
-        System.out.println("-----------------------------------------");
-        System.out.println((float) (d - a) / 1000 + " sec - полное время");
+        printRes( a, b, c, d);
     }
 
     public void CalckArray_3(float[] arr) {
@@ -80,18 +76,14 @@ public class ThreadsMain extends Thread {
         long d = System.currentTimeMillis();
 
         System.out.println("\nДва массива в 2 потока");
-        System.out.println((float) (b - a) / 1000 + " sec - время деления массива на два");
-        System.out.println((float) (c - b) / 1000 + " sec - время просчёта двух массивов");
-        System.out.println((float) (d - c) / 1000 + " sec - время склейки массивов");
-        System.out.println("-----------------------------------------");
-        System.out.println((float) (d - a) / 1000 + " sec - полное время");
+        printRes( a, b, c, d);
     }
 
     class MyThread1 extends Thread {
         @Override
         public void run() {
             for (int i = 0; i < h; i++)
-                a1[i] = (float) (a1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                a1[i] = calck(a1[i], i);
         }
     }
 
@@ -99,7 +91,19 @@ public class ThreadsMain extends Thread {
         @Override
         public void run() {
             for (int i = 0; i < h; i++)
-                a2[i] = (float) (a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                a2[i] = calck(a2[i], i);
         }
+    }
+// Повторяющиеся операции вынес в отдельные методы
+    public float calck(float ai, int it){
+        return ai = (float) (ai * Math.sin(0.2f + it / 5) * Math.cos(0.2f + it / 5) * Math.cos(0.4f + it / 2));
+    }
+
+    public void printRes(long a, long b, long c, long d) {
+        System.out.println((float) (b - a) / 1000 + " sec - время деления массива на два");
+        System.out.println((float) (c - b) / 1000 + " sec - время просчёта двух массивов");
+        System.out.println((float) (d - c) / 1000 + " sec - время склейки массивов");
+        System.out.println("-----------------------------------------");
+        System.out.println((float) (d - a) / 1000 + " sec - полное время");
     }
 }
